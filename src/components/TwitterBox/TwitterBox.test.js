@@ -35,4 +35,29 @@ describe('component/TwitterBox', () => {
       fireEvent.focus(twitterBox)
     })
   })
+
+  describe('functionality', () => {
+    it('disable submit if tweet length is 0', () => {
+      const { getByText } = render(<TwitterBox />)
+      const submitBtn = getByText('Tweet')
+      expect(submitBtn.disabled).toBe(true)
+    })
+    it('enables submit if tweet is less than maxLen', () => {
+      const { getByLabelText, getByText } = render(<TwitterBox />)
+      const tweetInput = getByLabelText('Write your tweet message')
+      const submitBtn = getByText('Tweet')
+      fireEvent.change(tweetInput, { target: { value: 'Hi Tweet' } })
+      expect(submitBtn.disabled).toBe(false)
+    })
+
+    it('disables submit if tweet is more than maxLen', () => {
+      const { getByLabelText, getByText } = render(<TwitterBox />)
+      const tweetInput = getByLabelText('Write your tweet message')
+      const submitBtn = getByText('Tweet')
+      fireEvent.change(tweetInput, { target: { value: 'Hi Tweet' } })
+      expect(submitBtn.disabled).toBe(false)
+      fireEvent.change(tweetInput, { target: { value: 'Hi super mega long Tweet' } })
+      expect(submitBtn.disabled).toBe(true)
+    })
+  })
 })

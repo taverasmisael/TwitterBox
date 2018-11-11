@@ -51,6 +51,8 @@ class TwitterBox extends PureComponent<Props, State> {
           data-gramm="false"
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          onChange={this.onChange}
+          value={tweetContent}
           className={styles.textarea}
         />
         <div className={styles.actions}>
@@ -68,6 +70,10 @@ class TwitterBox extends PureComponent<Props, State> {
 
   onFocus = () => this.setState({ isOpen: true })
   onBlur = () => this.setState({ isOpen: false })
+  onChange = ({ target }) => {
+    const canTweet = target.value.length <= this.maxTweetLength
+    return this.setState({ tweetContent: target.value, canTweet })
+  }
 }
 
 export default TwitterBox
