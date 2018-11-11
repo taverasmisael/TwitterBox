@@ -1,3 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component/TwitterBox should match snapshot 1`] = `<div />`;
+exports[`component/TwitterBox core and non-open state should match snapshot 1`] = `
+<div
+  class="container"
+>
+  <img
+    alt="Profile"
+    class="profilePic"
+  />
+  <textarea
+    aria-label="Write your tweet message"
+    class="textarea"
+    data-gramm="false"
+    rows="1"
+    type="text"
+  />
+  <div
+    class="actions"
+  >
+    <button
+      class="button is-primary is-rounded submit"
+      disabled=""
+      type="button"
+    >
+      Tweet
+    </button>
+  </div>
+</div>
+`;
+
+exports[`component/TwitterBox should match snapshot 1`] = `
+<div
+  class="container"
+>
+  <img
+    alt="Profile"
+    class="profilePic"
+  />
+  <textarea
+    aria-label="Write your tweet message"
+    class="textarea"
+    data-gramm="false"
+    rows="1"
+    type="text"
+  />
+  <div
+    class="actions"
+  >
+    <button
+      class="button is-primary is-rounded submit"
+      disabled=""
+      type="button"
+    >
+      Tweet
+    </button>
+  </div>
+</div>
+`;
