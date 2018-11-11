@@ -1,5 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react'
+import Textarea from 'react-textarea-autosize'
 import classnames from 'classnames'
 import styles from './TwitterBox.module.sass'
 
@@ -44,10 +45,9 @@ class TwitterBox extends PureComponent<Props, State> {
           src={profile.picture}
           className={styles.profilePic}
         />
-        <textarea
+        <Textarea
           type="text"
           aria-label="Write your tweet message"
-          rows="1"
           data-gramm="false"
           placeholder="What is on your mind?"
           onFocus={this.onFocus}
