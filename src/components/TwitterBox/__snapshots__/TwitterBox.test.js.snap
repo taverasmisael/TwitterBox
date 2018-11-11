@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`component/TwitterBox core and non-open state should match snapshot 1`] = `
+exports[`component/TwitterBox snapshots intiail state 1`] = `
 <div
   class="container"
 >
@@ -20,11 +20,150 @@ exports[`component/TwitterBox core and non-open state should match snapshot 1`] 
     class="actions"
   >
     <span
-      class="message"
+      class="message messageError"
     />
     <button
       class="button is-primary is-rounded submit"
       disabled=""
+      type="button"
+    >
+      Tweet
+    </button>
+  </div>
+</div>
+`;
+
+exports[`component/TwitterBox snapshots is open 1`] = `
+<div
+  class="container"
+>
+  <img
+    alt="Profile"
+    class="profilePic"
+  />
+  <textarea
+    aria-label="Write your tweet message"
+    class="textarea"
+    data-gramm="false"
+    placeholder="What is on your mind?"
+    style="height: 0px;"
+    type="text"
+  />
+  <div
+    class="actions"
+  >
+    <span
+      class="message messageError"
+    />
+    <button
+      class="button is-primary is-rounded submit"
+      disabled=""
+      type="button"
+    >
+      Tweet
+    </button>
+  </div>
+</div>
+`;
+
+exports[`component/TwitterBox snapshots is open 2`] = `
+<div
+  class="container containerIsOpen"
+>
+  <img
+    alt="Profile"
+    class="profilePic"
+  />
+  <textarea
+    aria-label="Write your tweet message"
+    class="textarea"
+    data-gramm="false"
+    placeholder="What is on your mind?"
+    style="height: 0px;"
+    type="text"
+  />
+  <div
+    class="actions"
+  >
+    <span
+      class="message messageError"
+    />
+    <button
+      class="button is-primary is-rounded submit"
+      disabled=""
+      type="button"
+    >
+      Tweet
+    </button>
+  </div>
+</div>
+`;
+
+exports[`component/TwitterBox snapshots with text and button disable (error message) 1`] = `
+<div
+  class="container"
+>
+  <img
+    alt="Profile"
+    class="profilePic"
+  />
+  <textarea
+    aria-label="Write your tweet message"
+    class="textarea"
+    data-gramm="false"
+    placeholder="What is on your mind?"
+    style="height: 0px;"
+    type="text"
+  >
+    Hi super long Tweet
+  </textarea>
+  <div
+    class="actions"
+  >
+    <span
+      class="message messageError messageVisible"
+    >
+      You have 9 characters above the limit(10)
+    </span>
+    <button
+      class="button is-primary is-rounded submit"
+      disabled=""
+      type="button"
+    >
+      Tweet
+    </button>
+  </div>
+</div>
+`;
+
+exports[`component/TwitterBox snapshots with text and button enable (positive message) 1`] = `
+<div
+  class="container"
+>
+  <img
+    alt="Profile"
+    class="profilePic"
+  />
+  <textarea
+    aria-label="Write your tweet message"
+    class="textarea"
+    data-gramm="false"
+    placeholder="What is on your mind?"
+    style="height: 0px;"
+    type="text"
+  >
+    Hi Tweet
+  </textarea>
+  <div
+    class="actions"
+  >
+    <span
+      class="message messageVisible"
+    >
+      You have 8 out of 10 left
+    </span>
+    <button
+      class="button is-primary is-rounded submit"
       type="button"
     >
       Tweet

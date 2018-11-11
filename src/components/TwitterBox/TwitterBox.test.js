@@ -12,12 +12,34 @@ describe('component/TwitterBox', () => {
       'https://pbs.twimg.com/profile_images/926912434610114560/MAMgQ07A_bigger.jpg',
   }
 
-  describe('core and non-open state', () => {
-    it('should match snapshot', () => {
+  describe('snapshots', () => {
+    it('intiail state', () => {
       const { container } = render(<TwitterBox />)
       expect(container.firstChild).toMatchSnapshot()
     })
+    it('is open', () => {
+      const { container, getByLabelText } = render(<TwitterBox />)
+      expect(container.firstChild).toMatchSnapshot()
+      const tweetInput = getByLabelText('Write your tweet message')
+      fireEvent.focus(tweetInput)
+      expect(container.firstChild).toMatchSnapshot()
+    })
+    it('with text and button enable (positive message)', () => {
+      const { getByLabelText, container } = render(<TwitterBox />)
+      const tweetInput = getByLabelText('Write your tweet message')
+      fireEvent.change(tweetInput, { target: { value: 'Hi Tweet' } })
+      expect(container.firstChild).toMatchSnapshot()
+    })
 
+    it('with text and button disable (error message)', () => {
+      const { getByLabelText, container } = render(<TwitterBox />)
+      const tweetInput = getByLabelText('Write your tweet message')
+      fireEvent.change(tweetInput, { target: { value: 'Hi super long Tweet' } })
+      expect(container.firstChild).toMatchSnapshot()
+    })
+  })
+
+  describe('core and non-open state', () => {
     it('should only display profile image and input when closed', () => {
       const { getByAltText, getByLabelText } = render(<TwitterBox />)
       expect(getByAltText('Profile')).toBeInTheDocument()
@@ -87,10 +109,12 @@ describe('component/TwitterBox', () => {
       it('tells me when I have exceded the maxLength', () => {
         const { getByLabelText, getByText } = render(<TwitterBox />)
         const tweetInput = getByLabelText('Write your tweet message')
-        fireEvent.change(tweetInput, { target: { value: 'Hi super long Tweet' } })
-        expect(getByText(/You have \d* characters above the limit(\d*)/).textContent).toEqual(
-          'You have 9 characters above the limit(10)'
-        )
+        fireEvent.change(tweetInput, {
+          target: { value: 'Hi super long Tweet' },
+        })
+        expect(
+          getByText(/You have \d* characters above the limit(\d*)/).textContent
+        ).toEqual('You have 9 characters above the limit(10)')
       })
     })
   })
