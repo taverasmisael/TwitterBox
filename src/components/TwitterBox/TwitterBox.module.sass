@@ -1,0 +1,56 @@
+$twitterColor: #039ff5;
+$twitterSoft: rgba($twitterColor, 0.4);
+$profileAccent: var(--profile-accent, $twitterSoft);
+.container
+  align-items: center
+  background-color: $profileAccent
+  color: var(--profile-accent, #fff)
+  display: grid
+  grid-template-areas: "pic textarea" ". actions"
+  grid-template-columns: 36px 1fr
+  grid-template-rows: 1fr
+  grid-gap: 6px
+  padding: 10px 12px
+  .textarea
+    max-height: 36px
+  &.containerIsOpen
+    align-items: flex-start
+    min-height: 150px
+    .textarea
+      max-height: 100%
+      &:focus
+        border: 2px solid rgba($twitterColor, 0.6)
+    .actions
+      display: grid
+      grid-template-areas: "addons . submit"
+      grid-template-rows: 1fr
+      grid-template-columns: 4fr 1fr 1fr
+
+.profilePic
+  border-radius: 50%
+  display: block
+  grid-area: pic
+  height: auto
+  width: 100%
+
+.textarea
+  border: 0
+  border-radius: 4px
+  box-shadow: none
+  grid-area: textarea
+  font-size:  18px
+  height: 100%
+  padding: 8px
+  resize: none
+  will-change: border, max-height
+  width: 100%
+  &:focus
+    border-radius: 4px
+    outline: none
+
+.actions
+  display: none
+  grid-area: actions
+
+.submit
+  grid-area: submit

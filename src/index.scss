@@ -1,2 +1,6 @@
 @charset 'utf-8';
+$twitterColor: #039ff5;
+$twitterSoft: rgba($twitterColor, 0.4);
+$profileAccent: var(--profile-accent, $twitterSoft);
+$primary: $twitterColor;
 @import '~bulma/bulma';
