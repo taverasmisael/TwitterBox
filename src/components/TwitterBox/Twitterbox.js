@@ -72,7 +72,8 @@ class TwitterBox extends PureComponent<Props, State> {
   onFocus = () => this.setState({ isOpen: true })
   onBlur = () => this.setState({ isOpen: false })
   onChange = ({ target }) => {
-    const canTweet = target.value.length <= this.maxTweetLength
+    const canTweet =
+      target.value.length && target.value.length <= this.maxTweetLength
     return this.setState({ tweetContent: target.value, canTweet })
   }
 }

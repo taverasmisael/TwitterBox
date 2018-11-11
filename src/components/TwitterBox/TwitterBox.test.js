@@ -59,5 +59,15 @@ describe('component/TwitterBox', () => {
       fireEvent.change(tweetInput, { target: { value: 'Hi super mega long Tweet' } })
       expect(submitBtn.disabled).toBe(true)
     })
+
+    it('disables submit if tweet goes back to 0 characters', () => {
+      const { getByLabelText, getByText } = render(<TwitterBox />)
+      const tweetInput = getByLabelText('Write your tweet message')
+      const submitBtn = getByText('Tweet')
+      fireEvent.change(tweetInput, { target: { value: 'Hi Tweet' } })
+      expect(submitBtn.disabled).toBe(false)
+      fireEvent.change(tweetInput, { target: { value: '' } })
+      expect(submitBtn.disabled).toBe(true)
+    })
   })
 })
