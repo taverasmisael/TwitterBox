@@ -1,1 +1,1 @@
-export { default } from './Twitterbox'
+export { default } from './TwitterBox'
