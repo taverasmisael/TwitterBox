@@ -49,6 +49,7 @@ class TwitterBox extends PureComponent<Props, State> {
           aria-label="Write your tweet message"
           rows="1"
           data-gramm="false"
+          placeholder="What is on your mind?"
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           onChange={this.onChange}
