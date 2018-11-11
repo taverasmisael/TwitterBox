@@ -17,6 +17,7 @@ type State = {
   isOpen: boolean,
   canTweet: boolean,
   tweetContent: string,
+  message: string,
 }
 
 class TwitterBox extends PureComponent<Props, State> {
@@ -28,12 +29,13 @@ class TwitterBox extends PureComponent<Props, State> {
     isOpen: false,
     canTweet: false,
     tweetContent: '',
+    message: '',
   }
   maxTweetLength = 10
 
   render() {
     const { profile } = this.props
-    const { isOpen, canTweet, tweetContent } = this.state
+    const { isOpen, canTweet, tweetContent, message } = this.state
     return (
       <div
         className={classnames(styles.container, {
@@ -57,6 +59,14 @@ class TwitterBox extends PureComponent<Props, State> {
           className={styles.textarea}
         />
         <div className={styles.actions}>
+          <span
+            className={classnames(styles.message, {
+              [styles.messageError]: !canTweet,
+              [styles.messageVisible]: tweetContent,
+            })}
+          >
+            {message}
+          </span>
           <button
             disabled={!canTweet}
             type="button"
@@ -70,11 +80,21 @@ class TwitterBox extends PureComponent<Props, State> {
   }
 
   onFocus = () => this.setState({ isOpen: true })
-  onBlur = () => this.setState(state => ({ isOpen: state.canTweet }))
+  onBlur = () => this.setState(state => ({ isOpen: state.tweetContent }))
   onChange = ({ target }) => {
     const canTweet =
       target.value.length && target.value.length <= this.maxTweetLength
-    return this.setState({ tweetContent: target.value, canTweet })
+    const message = canTweet
+      ? `You have ${target.value.length} out of ${this.maxTweetLength} left`
+      : `You have ${target.value.length -
+          this.maxTweetLength} characters above the limit(${
+          this.maxTweetLength
+        })`
+    return this.setState({
+      tweetContent: target.value,
+      canTweet,
+      message,
+    })
   }
 }
 

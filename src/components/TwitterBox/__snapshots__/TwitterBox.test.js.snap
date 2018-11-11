@@ -19,6 +19,9 @@ exports[`component/TwitterBox core and non-open state should match snapshot 1`] 
   <div
     class="actions"
   >
+    <span
+      class="message"
+    />
     <button
       class="button is-primary is-rounded submit"
       disabled=""

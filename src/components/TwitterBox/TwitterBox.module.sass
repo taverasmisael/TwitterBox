@@ -54,3 +54,10 @@ $profileAccent: var(--profile-accent, $twitterSoft);
 
 .submit
   grid-area: submit
+
+.message
+  display: none
+  &.messageVisible
+    display: block
+  &.messageError
+    color: rgba(200,80,100,1)
