@@ -19,8 +19,6 @@ $profileAccent: var(--profile-accent, $twitterSoft);
     .textarea
       min-height: 100%
       max-height: 100%
-      &:focus
-        border: 2px solid rgba($twitterColor, 0.6)
     .actions
       display: grid
       grid-template-areas: "addons . submit"
@@ -35,17 +33,18 @@ $profileAccent: var(--profile-accent, $twitterSoft);
   width: 100%
 
 .textarea
-  border: 0
+  border: 2px solid transparent
   border-radius: 4px
   box-shadow: none
   grid-area: textarea
-  font-size:  18px
+  font-size:  16px
   height: 100%
   padding: 8px
   resize: none
-  will-change: border, max-height
+  will-change: border-color, ma x-height
   width: 100%
   &:focus
+    border-color: rgba($twitterColor, 0.6)
     border-radius: 4px
     outline: none
 
