@@ -24,6 +24,15 @@ describe('component/TwitterBox', () => {
       fireEvent.focus(tweetInput)
       expect(container.firstChild).toMatchSnapshot()
     })
+    it('is closed if focus then blur without tweet', () => {
+      const { container, getByLabelText } = render(<TwitterBox />)
+      const tweetInput = getByLabelText('Write your tweet message')
+      const beforeFocus = container.firstChild
+      fireEvent.focus(tweetInput)
+      fireEvent.blur(tweetInput)
+      const afterBlur = container.firstChild
+      expect(beforeFocus).toEqual(afterBlur)
+    })
     it('with text and button enable (positive message)', () => {
       const { getByLabelText, container } = render(<TwitterBox />)
       const tweetInput = getByLabelText('Write your tweet message')
