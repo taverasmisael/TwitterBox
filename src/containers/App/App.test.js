@@ -1,8 +1,15 @@
-import React from 'react';
-import { render } from 'react-testing-library';
-import App from './App';
+import React from 'react'
+import { render } from 'react-testing-library'
+import App from './App'
 
-it('renders welcome message', () => {
-  const { getByText } = render(<App />);
-  expect(getByText('Twitter Box Example')).toBeInTheDocument();
-});
+describe('containers/App', () => {
+  it('renders without crashing', () => {
+    const { getByText } = render(<App />)
+    expect(getByText('Twitter Box Example')).toBeInTheDocument()
+  })
+
+  it('matches snapshot', () => {
+    const { container } = render(<App />)
+    expect(container.firstChild).toMatchSnapshot()
+  })
+})
